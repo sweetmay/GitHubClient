@@ -4,6 +4,8 @@ import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 
 @AddToEndSingle
-interface PersonalView: MvpView {
-    fun renderData()
+interface ReposView: MvpView {
+    fun initRV()
+    fun updateList()
+    fun renderUserName()
 }
