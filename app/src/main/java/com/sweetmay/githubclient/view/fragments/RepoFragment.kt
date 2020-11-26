@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sweetmay.App
 import com.sweetmay.githubclient.R
+import com.sweetmay.githubclient.model.cache.room.RoomCache
 import com.sweetmay.githubclient.model.entity.GitHubUser
 import com.sweetmay.githubclient.presenter.RepoPresenter
 import com.sweetmay.githubclient.view.ReposView
 import com.sweetmay.githubclient.view.adapter.RepoAdapterRV
+import com.sweetmay.utils.NetworkStatus
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_repos.*
 import moxy.MvpAppCompatFragment
@@ -37,7 +39,7 @@ class RepoFragment : MvpAppCompatFragment(R.layout.fragment_repos), ReposView {
         }
     }
 
-    private val presenter by moxyPresenter { RepoPresenter(App.instance.getApi(), AndroidSchedulers.mainThread()) }
+    private val presenter by moxyPresenter { RepoPresenter(App.instance.getApi(), AndroidSchedulers.mainThread(), NetworkStatus(), RoomCache(App.instance.getDb())) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,4 +1,4 @@
-package com.sweetmay.githubclient
+package com.sweetmay.utils
 
 import com.sweetmay.githubclient.model.repo.retrofit.api.IDataSource
 import retrofit2.Retrofit

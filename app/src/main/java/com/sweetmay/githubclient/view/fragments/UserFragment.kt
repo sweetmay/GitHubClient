@@ -7,19 +7,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sweetmay.App
 import com.sweetmay.githubclient.R
+import com.sweetmay.githubclient.model.cache.room.RoomCache
 import com.sweetmay.githubclient.presenter.UsersPresenter
 import com.sweetmay.githubclient.view.UsersView
 import com.sweetmay.githubclient.view.adapter.UserAdapterRV
 import com.sweetmay.githubclient.view.image.GlideLoader
+import com.sweetmay.utils.NetworkStatus
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_users.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
 class UserFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView {
 
-    private val presenter by moxyPresenter { UsersPresenter(App.instance.getApi(), AndroidSchedulers.mainThread()) }
+    private val presenter by moxyPresenter { UsersPresenter(App.instance.getApi()
+        , AndroidSchedulers.mainThread()
+        , NetworkStatus()
+        , RoomCache(App.instance.getDb()))}
     lateinit var adapterRV: UserAdapterRV
 
     override fun onCreateView(
