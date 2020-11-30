@@ -5,13 +5,17 @@ import com.sweetmay.githubclient.R
 import com.sweetmay.githubclient.presenter.MainPresenter
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
+import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import javax.inject.Inject
 
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 
     private val presenter by moxyPresenter { MainPresenter() }
-    private val navigatorHolder = App.instance.getNavigationHolder()
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
     private val navigator = SupportAppNavigator(this, R.id.fragment_container)
 
 
@@ -29,5 +33,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        App.instance.appComponent.inject(this)
     }
 }

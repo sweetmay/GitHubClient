@@ -20,10 +20,7 @@ import moxy.ktx.moxyPresenter
 
 class UserFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView {
 
-    private val presenter by moxyPresenter { UsersPresenter(App.instance.getApi()
-        , AndroidSchedulers.mainThread()
-        , NetworkStatus()
-        , RoomCache(App.instance.getDb()))}
+    private val presenter by moxyPresenter { UsersPresenter()}
     lateinit var adapterRV: UserAdapterRV
 
     override fun onCreateView(

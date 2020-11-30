@@ -23,7 +23,7 @@ class ForkFragment: MvpAppCompatFragment(R.layout.fragment_fork), ForkView {
             return arguments?.get(REPO_KEY) as UsersRepo
         }
 
-    private val presenter by moxyPresenter { ForkPresenter(App.instance.getApi(), AndroidSchedulers.mainThread()) }
+    private val presenter by moxyPresenter { ForkPresenter() }
 
     companion object{
         const val REPO_KEY = "repo_key"
