@@ -1,9 +1,8 @@
-package com.sweetmay.githubclient
+package com.sweetmay.githubclient.view
 import android.os.Bundle
 import com.sweetmay.App
+import com.sweetmay.githubclient.R
 import com.sweetmay.githubclient.presenter.MainPresenter
-import com.sweetmay.githubclient.view.MainView
-import com.sweetmay.githubclient.view.fragments.BackButtonListener
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -26,17 +25,9 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         navigatorHolder.removeNavigator()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        for (fragment in supportFragmentManager.fragments) {
-            if (fragment is BackButtonListener && (fragment as BackButtonListener).backPressed()) {
-                return
-            }
-        }
     }
 }
