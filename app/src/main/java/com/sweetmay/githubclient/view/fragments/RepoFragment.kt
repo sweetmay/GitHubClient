@@ -39,7 +39,7 @@ class RepoFragment : MvpAppCompatFragment(R.layout.fragment_repos), ReposView {
         }
     }
 
-    private val presenter by moxyPresenter { RepoPresenter(App.instance.getApi(), AndroidSchedulers.mainThread(), NetworkStatus(), RoomCache(App.instance.getDb())) }
+    private val presenter by moxyPresenter { RepoPresenter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,

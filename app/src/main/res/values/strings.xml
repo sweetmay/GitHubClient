@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GitHubClient</string>
     <string name="base_url">https://api.github.com/</string>
+    <string name="db_name">database.db</string>
 </resources>
